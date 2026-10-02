@@ -1,14 +1,12 @@
 CREATE TABLE  UAV (
-    uav_id          INTEGER PRIMARY KEY AUTOINCREMENT,
-    name            VARCHAR(50)  NOT NULL,
-    model           VARCHAR(50),
-    battery_level   DECIMAL(5,2) NOT NULL DEFAULT 100,   -- 0-100
-    latitude        DECIMAL(9,6),
-    longitude       DECIMAL(9,6),
-    status          VARCHAR(20)  NOT NULL DEFAULT 'IDLE',
-                    -- IDLE | ON_MISSION | CHARGING | MAINTENANCE | OFFLINE
-    availability    BOOLEAN      NOT NULL DEFAULT 1,     -- 1 = available, 0 = not
-    CHECK (battery_level BETWEEN 0 AND 100)
+    uav_id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50) NOT NULL,
+    model VARCHAR(50),
+    battery_level DECIMAL(5,2) NOT NULL DEFAULT 100,
+    latitude DECIMAL(9,6),
+    longitude DECIMAL(9,6),
+    status VARCHAR(20) NOT NULL DEFAULT 'IDLE',
+    availability BOOLEAN NOT NULL DEFAULT 1
 );
 
 CREATE TABLE  MISSION (
