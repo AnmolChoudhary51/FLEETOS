@@ -10,16 +10,17 @@ CREATE TABLE  UAV (
 );
 
 CREATE TABLE  MISSION (
-    mission_id      INTEGER PRIMARY KEY AUTOINCREMENT,
-    mission_type    VARCHAR(30)  NOT NULL,   -- MAPPING | DELIVERY | SURVEILLANCE | RESCUE ...
-    priority        INTEGER      NOT NULL DEFAULT 3,  -- 1 = highest ... 5 = lowest
+    mission_id      INTEGER PRIMARY KEY AUTO_INCREMENT,
+    mission_type    VARCHAR(30)  NOT NULL,   
+    priority        INTEGER      NOT NULL DEFAULT 3,  
     latitude        DECIMAL(9,6) NOT NULL,
     longitude       DECIMAL(9,6) NOT NULL,
     status          VARCHAR(20)  NOT NULL DEFAULT 'PENDING',
-                    -- PENDING | ASSIGNED | IN_PROGRESS | COMPLETED | FAILED | CANCELLED
+                    
     created_at      DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CHECK (priority BETWEEN 1 AND 5)
 );
+
 
 CREATE TABLE  FAULT_LOG (
     fault_id        INTEGER PRIMARY KEY AUTOINCREMENT,
