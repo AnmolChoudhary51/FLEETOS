@@ -51,3 +51,13 @@ CREATE TABLE  FAULT_LOG (
 CREATE INDEX IF NOT EXISTS idx_faultlog_uav_time
     ON FAULT_LOG(uav_id, timestamp DESC);
 
+
+CREATE TABLE  MISSION_LOG (
+    log_id          INT AUTO_INCREMENT PRIMARY KEY,
+    mission_id      INT          NOT NULL,
+    uav_id          INT          NULL,
+    status          VARCHAR(20)  NOT NULL,
+    timestamp       DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_missionlog_mission FOREIGN KEY (mission_id) REFERENCES MISSION(mission_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_missionlog_uav FOREIGN KEY (uav_id) REFERENCES UAV(uav_id) ON DELETE SET NULL ON UPDATE CASCADE
+);
