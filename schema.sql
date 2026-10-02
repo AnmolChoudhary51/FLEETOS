@@ -23,7 +23,7 @@ CREATE TABLE  MISSION (
 
 
 CREATE TABLE  FAULT_LOG (
-    fault_id        INTEGER PRIMARY KEY AUTOINCREMENT,
+    fault_id        INTEGER PRIMARY KEY AUTO_INCREMENT,
     uav_id          INTEGER      NOT NULL,
     fault_type      VARCHAR(30)  NOT NULL,   -- LOW_BATTERY | COMM_LOSS | MOTOR_FAILURE |
                                               -- GPS_ERROR | SENSOR_FAULT | CRASH | OTHER
