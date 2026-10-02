@@ -21,6 +21,22 @@ CREATE TABLE  MISSION (
     CHECK (priority BETWEEN 1 AND 5)
 );
 
+CREATE TABLE  ASSIGNMENT (
+    assignment_id   INT AUTO_INCREMENT PRIMARY KEY,
+    uav_id          INT          NOT NULL,
+    mission_id      INT          NOT NULL,
+    assigned_at     DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    completed_at    DATETIME     NULL,
+    status          VARCHAR(20)  NOT NULL DEFAULT 'ACTIVE',
+                    -- ACTIVE | COMPLETED | REASSIGNED | FAILED
+    CONSTRAINT fk_assignment_uav FOREIGN KEY (uav_id) REFERENCES UAV(uav_id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_assignment_mission FOREIGN KEY (mission_id) REFERENCES MISSION(mission_id)  ON DELETE CASCADE ON UPDATE CASCADE,
+   CHECK (status IN ('ACTIVE','COMPLETED','REASSIGNED','FAILED')) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE INDEX idx_assignment_uav ON ASSIGNMENT(uav_id);
+CREATE INDEX idx_assignment_mission ON ASSIGNMENT(mission_id);
+CREATE INDEX idx_assignment_status ON ASSIGNMENT(status);
+
 
 CREATE TABLE  FAULT_LOG (
     fault_id        INTEGER PRIMARY KEY AUTO_INCREMENT,
