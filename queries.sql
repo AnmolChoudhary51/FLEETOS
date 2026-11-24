@@ -1,3 +1,7 @@
+-- ----------------------------------------------------------------------------
+-- 1. UAV QUERIES (CRUD & Fleet Operations)
+-- ----------------------------------------------------------------------------
+
 -- 1.1 Insert a new UAV
 INSERT INTO uav (name, model, battery_level, latitude, longitude, status, availability, max_payload_kg, capabilities)
 VALUES ('Garuda-03', 'DJI Matrice 300 RTK', 100.0, 28.6139, 77.2090, 'IDLE', 1, 9.0, 'CAMERA,THERMAL');
